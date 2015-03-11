@@ -42,6 +42,11 @@
     type: int
     sql: ${TABLE}.Jurisdiction
 
+  - dimension: order_age
+    type: int
+    sql: DATEDIFF( DAY, ${order_create_date}, GETDATE() )
+    tiers: [0,7,15,30,60,90,120]
+
   - dimension_group: order_create
     type: time
     timeframes: [time, date, week, month]
@@ -110,10 +115,6 @@
 
   - dimension: trans_type
     sql: ${TABLE}.TransType
-
-  - dimension: order_age
-    type: int
-    sql: DATEDIFF( DAY, ${order_create_date}, GETDATE() )
 
   - measure: count
     type: count
