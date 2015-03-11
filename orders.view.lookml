@@ -128,6 +128,10 @@
     decimals: 2
     drill_fields: orders_drill_set_1*
     html: ${{ rendered_value }}   
+    
+  - measure: order_age
+    type: int
+    sql: DATEDIFF( DAY, GETDATE(), ${order_create_date} )
 
 ### SETS ###
 
