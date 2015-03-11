@@ -42,10 +42,14 @@
     type: int
     sql: ${TABLE}.Jurisdiction
 
-  - dimension: order_age
+  - dimension: order_age_days
     type: int
     sql: DATEDIFF( DAY, ${order_create_date}, GETDATE() )
-    tiers: [0,7,15,30,60,90,120]
+
+  - dimension: order_age_tier
+    type: tier
+    sql: ${order_age_days}
+    tiers: [0,7,15,30,60]
 
   - dimension_group: order_create
     type: time
