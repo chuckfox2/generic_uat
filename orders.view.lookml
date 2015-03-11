@@ -111,6 +111,10 @@
   - dimension: trans_type
     sql: ${TABLE}.TransType
 
+  - dimension: order_age
+    type: int
+    sql: DATEDIFF( DAY, GETDATE(), ${order_create_date} )
+
   - measure: count
     type: count
     drill_fields: orders_drill_set_1*
@@ -129,10 +133,6 @@
     drill_fields: orders_drill_set_1*
     html: ${{ rendered_value }}   
     
-  - measure: order_age
-    type: int
-    sql: DATEDIFF( DAY, GETDATE(), ${order_create_date} )
-
 ### SETS ###
 
 # Sets are a list of dimensions and measures that can be referenced collectively as a set, for functions like drill down.
