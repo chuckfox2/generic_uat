@@ -113,7 +113,7 @@
 
   - dimension: order_age
     type: int
-    sql: DATEDIFF( DAY, GETDATE(), ${order_create_date} )
+    sql: DATEDIFF( DAY, ${order_create_date}, GETDATE() )
 
   - measure: count
     type: count
