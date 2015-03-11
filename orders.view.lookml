@@ -144,5 +144,6 @@
       - carrier_full_name
       - state_abbr                                  
       - qual_plan_desc
+      - plan_name
       - invest_amt
       - commission_amt

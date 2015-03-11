@@ -54,8 +54,10 @@
     detail:
     - id
     - full_name
+    - email_address
     - orders.order_id
     - orders.carrier_full_name
     - orders.carrier_abbr_name
     - orders.plan_name
+    - orders.invest_amt
 
