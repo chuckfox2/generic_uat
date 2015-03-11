@@ -66,6 +66,9 @@
     timeframes: [time, date, week, month]
     sql: ${TABLE}.OrderTradeDate
 
+  - dimension: pending_stage
+    sql: ${TABLE}.PendingState
+
   - dimension: plan_name
     sql: ${TABLE}.PlanName
 
