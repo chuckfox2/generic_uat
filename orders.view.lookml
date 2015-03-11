@@ -113,20 +113,36 @@
 
   - measure: count
     type: count
-    drill_fields: [order_id, carrier_full_name, product_type_desc, plan_name]
+    drill_fields: orders_drill_set_1*
 
   - measure: sum_invest_amt
     type: sum
     sql: ${invest_amt}
     decimals: 2
-    html: |                                           
-      ${{ rendered_value }}   
-    drill_fields: [order_id, carrier_full_name, product_type_desc, plan_name]
-    
+    drill_fields: orders_drill_set_1*
+    html: ${{ rendered_value }}   
+
   - measure: sum_commission_amt
     type: sum
     sql: ${commission_amt}
     decimals: 2
-    html: |                                           
-      ${{ rendered_value }}   
-    drill_fields: [order_id, carrier_full_name, product_type_desc, plan_name]
+    drill_fields: orders_drill_set_1*
+    html: ${{ rendered_value }}   
+
+### SETS ###
+
+# Sets are a list of dimensions and measures that can be referenced collectively as a set, for functions like drill down.
+# You reference a set with the set name, like 'export_set' or 'orders_drill_set_1' below. 
+
+  sets:
+    orders_drill_set_1:                               # Set names are explicitly defined by the user and included looker fields are tabbed below
+      - order_id
+      - trans_type
+      - order_create_time
+      - status_desc
+      - status_time
+      - carrier_full_name
+      - state_abbr                                  
+      - qual_plan_desc
+      - invest_amt
+      - commission_amt
