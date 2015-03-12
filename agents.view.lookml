@@ -1,7 +1,7 @@
 - view: agents
   fields:
 
-  - dimension: id
+  - dimension: id             # Agent ID - this is the RelHoldingParty.RelatedRefId 
     primary_key: true
     sql: ${TABLE}.ID
 

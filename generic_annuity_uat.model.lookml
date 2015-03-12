@@ -15,11 +15,11 @@
 ### EXPLORES ###
 # Please see README.lookml for an explanation of explores and best practices
 
-- explore: agents                    # 'agents' is the explore to which we will join other views
-  conditionally_filter:              # provides a default filter to all queries from the 'agents' explore
-    orders.created_date: 30 days     # refers to the 'created_date' dimension in the 'orders' view and indicates '30 days' as the default value
-    unless:                          # 'unless' parameter will remove conditionally_filter if any dimension below is included as a filter
-      - orders.order_create_time     # if 'orders.created_time' is included as a filter, 'orders.created_date: 30 days' can be excluded
+- explore: agents                     # 'agents' is the explore to which we will join other views
+  conditionally_filter:               # provides a default filter to all queries from the 'agents' explore
+    orders.order_create_date: 30 days # refers to the 'created_date' dimension in the 'orders' view and indicates '30 days' as the default value
+    unless:                           # 'unless' parameter will remove conditionally_filter if any dimension below is included as a filter
+      - orders.order_create_time      # if 'orders.created_time' is included as a filter, 'orders.created_date: 30 days' can be excluded
       - orders.order_create_week
       - orders.order_create_month
       - agents.full_name
