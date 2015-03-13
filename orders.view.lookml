@@ -1,11 +1,15 @@
 - view: orders
   fields:
 
+  - dimension: orders_pk
+    sql: ${TABLE}.TransIdentifier + CAST( ${TABLE}.AdmTransGUID AS varchar(40) ) 
+    primary_key: true
+    hidden: true
+
   - dimension: order_id
     sql: ${TABLE}.OrderID
 
   - dimension: adm_trans_guid
-    primary_key: true
     sql: ${TABLE}.AdmTransGUID
 
   - dimension: carrier_abbr_name
