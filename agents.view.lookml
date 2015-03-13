@@ -2,9 +2,12 @@
   fields:
 
   - dimension: agents_pk
-    sql: ${TABLE}.TransIdentifier + CAST( ${TABLE}.AdmTransGUID AS varchar(40) ) + ${TABLE}.ID 
+    sql: ${TABLE}.OrderID + CAST( ${TABLE}.AdmTransGUID AS varchar(40) ) + ${TABLE}.ID 
     primary_key: true
     hidden: true
+
+  - dimension: adm_trans_guid
+    sql: ${TABLE}.AdmTransGUID
 
   - dimension: id             # Agent ID - this is the RelHoldingParty.RelatedRefId 
     sql: ${TABLE}.ID
@@ -14,9 +17,6 @@
 
   - dimension: address_line2
     sql: ${TABLE}.AddressLine2
-
-  - dimension: adm_trans_guid
-    sql: ${TABLE}.AdmTransGUID
 
   - dimension: city
     sql: ${TABLE}.City

@@ -40,7 +40,7 @@
     type: number
     sql: ${TABLE}.SubAccountSeq
 
-  - dimension: trans_identifier
+  - dimension: order_id
     sql: ${TABLE}.TransIdentifier
 
   - dimension: transfer_pct
@@ -49,7 +49,7 @@
 
   - measure: count
     type: count
-    drill_fields: [trans_identifier, sequence, carrier_name, product_full_name, invest_amt, carrier_code, product_code, cusip_num ]
+    drill_fields: [order_id, sequence, carrier_name, product_full_name, invest_amt, carrier_code, product_code, cusip_num ]
 
   - measure: sum_invest_amt
     type: sum
