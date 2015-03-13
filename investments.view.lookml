@@ -1,6 +1,11 @@
 - view: investments
   fields:
 
+  - dimension: investments_pk
+    sql: ${TABLE}.TransIdentifier + CAST( ${TABLE}.AdmTransGUID AS varchar(40) ) + RIGHT( '000000' + CAST( ${TABLE}.Sequence AS varchar(6) ), 6 )
+    primary_key: true
+    hidden: true
+
   - dimension: adm_trans_guid
     sql: ${TABLE}.AdmTransGUID
 
@@ -44,5 +49,11 @@
 
   - measure: count
     type: count
-    drill_fields: [carrier_name, product_full_name]
+    drill_fields: [trans_identifier, sequence, carrier_name, product_full_name, invest_amt, carrier_code, product_code, cusip_num ]
 
+  - measure: sum_invest_amt
+    type: sum
+    sql: ${orders.invest_amt} * ${transfer_pct}
+    decimals: 2
+    drill_fields: detail*
+    html: ${{ rendered_value }}   

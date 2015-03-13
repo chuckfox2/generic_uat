@@ -1,6 +1,11 @@
 - view: funds
   sql_table_name: Funds
   fields:
+  
+  - dimension: funds_pk
+    sql: ${TABLE}.TransIdentifier + CAST( ${TABLE}.AdmTransGUID AS varchar(40) ) + RIGHT( '000000' + CAST( ${TABLE}.Sequence AS varchar(6) ), 6 )
+    primary_key: true
+    hidden: true
 
   - dimension: adm_trans_guid
     sql: ${TABLE}.AdmTransGUID
@@ -74,7 +79,34 @@
   - measure: count
     type: count
     drill_fields: detail*
+  
+  - measure: sum_surrender_charge
+    type: sum
+    sql: ${surrender_charge}
+    decimals: 2
+    drill_fields: detail*
+    html: ${{ rendered_value }}   
 
+  - measure: sum_invest_amt
+    type: sum
+    sql: ${invest_amt}
+    decimals: 2
+    drill_fields: detail*
+    html: ${{ rendered_value }}   
+
+  - measure: sum_commission_amt
+    type: sum
+    sql: ${commission_amt}
+    decimals: 2
+    drill_fields: detail*
+    html: ${{ rendered_value }}   
+
+  - measure: sum_death_benefit_amount
+    type: sum
+    sql: ${death_benefit_amount}
+    decimals: 2
+    drill_fields: detail*
+    html: ${{ rendered_value }}   
 
   # ----- Sets of fields for drilling ------
   sets:

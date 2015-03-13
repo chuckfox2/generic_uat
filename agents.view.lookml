@@ -1,8 +1,12 @@
 - view: agents
   fields:
 
-  - dimension: id             # Agent ID - this is the RelHoldingParty.RelatedRefId 
+  - dimension: agents_pk
+    sql: ${TABLE}.TransIdentifier + CAST( ${TABLE}.AdmTransGUID AS varchar(40) ) + ${TABLE}.ID 
     primary_key: true
+    hidden: true
+
+  - dimension: id             # Agent ID - this is the RelHoldingParty.RelatedRefId 
     sql: ${TABLE}.ID
 
   - dimension: address_line1
@@ -47,7 +51,6 @@
   - measure: count
     type: count
     drill_fields: detail*
-
 
   # ----- Sets of fields for drilling ------
   sets:
