@@ -48,7 +48,7 @@
 
   - measure: sum_invest_amt
     type: sum
-    sql: ${orders.invest_amt} * ${transfer_pct}
+    sql: ${orders.invest_amt} * ${transfer_pct} / 100
     decimals: 2
     drill_fields: detail*
     html: ${{ rendered_value }}   
