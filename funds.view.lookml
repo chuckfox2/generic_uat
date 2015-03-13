@@ -2,11 +2,6 @@
   sql_table_name: Funds
   fields:
   
-  - dimension: funds_pk
-    sql: ${TABLE}.OrderID + CAST( ${TABLE}.AdmTransGUID AS varchar(40) ) + RIGHT( '000000' + CAST( ${TABLE}.Sequence AS varchar(6) ), 6 )
-    primary_key: true
-    hidden: true
-
   - dimension: adm_trans_guid
     sql: ${TABLE}.AdmTransGUID
 

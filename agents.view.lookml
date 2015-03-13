@@ -1,11 +1,6 @@
 - view: agents
   fields:
 
-  - dimension: agents_pk
-    sql: ${TABLE}.OrderID + CAST( ${TABLE}.AdmTransGUID AS varchar(40) ) + ${TABLE}.ID 
-    primary_key: true
-    hidden: true
-
   - dimension: adm_trans_guid
     sql: ${TABLE}.AdmTransGUID
 
