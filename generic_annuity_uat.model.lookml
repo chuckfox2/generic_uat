@@ -26,7 +26,7 @@
       - agents.id
   joins:                                              # 'joins' section indicates which views to join to the explore 'order_items'
     - join: orders                                    # Results in the following SQL: LEFT JOIN orders ON orders.id = order_items.order_id 
-      foreign_key: agents.adm_trans_guid              # 'sql_on:' lets you explicitely state which fields to join on when joining 'orders'
+      foreign_key: agents.order_id              # 'sql_on:' lets you explicitely state which fields to join on when joining 'orders'
                                                       # 'sql:' lets you perform any kind of join by writing the SQL expression explicitly
                                                       # best practice is to use 'foreign_key:'. See the Docs for more info: http://docs.looker.com/documentation/reference/reference.html
 
@@ -45,7 +45,7 @@
       - funds.surrendered_product_type_code
   joins:                                              # 'joins' section indicates which views to join to the explore 'order_items'
     - join: orders                                    # Results in the following SQL: LEFT JOIN orders ON orders.id = order_items.order_id 
-      foreign_key: funds.adm_trans_guid               # 'sql_on:' lets you explicitely state which fields to join on when joining 'orders'
+      foreign_key: funds.order_id               # 'sql_on:' lets you explicitely state which fields to join on when joining 'orders'
                                                       # 'sql:' lets you perform any kind of join by writing the SQL expression explicitly
                                                       # best practice is to use 'foreign_key:'. See the Docs for more info: http://docs.looker.com/documentation/reference/reference.html
 - explore: investments                # 'investments' is the explore to which we will join other views
@@ -60,7 +60,7 @@
       - investments.product_full_name
   joins:                                              # 'joins' section indicates which views to join to the explore 'order_items'
     - join: orders                                    # Results in the following SQL: LEFT JOIN orders ON orders.id = order_items.order_id 
-      foreign_key: investments.adm_trans_guid               # 'sql_on:' lets you explicitely state which fields to join on when joining 'orders'
+      foreign_key: investments.order_id               # 'sql_on:' lets you explicitely state which fields to join on when joining 'orders'
                                                       # 'sql:' lets you perform any kind of join by writing the SQL expression explicitly
                                                       # best practice is to use 'foreign_key:'. See the Docs for more info: http://docs.looker.com/documentation/reference/reference.html
 - explore: orders
