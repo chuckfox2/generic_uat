@@ -2,10 +2,10 @@
   fields:
 
   - dimension: order_id
+    primary_key: true
     sql: ${TABLE}.OrderID
 
   - dimension: adm_trans_guid
-    primary_key: true
     sql: ${TABLE}.AdmTransGUID
 
   - dimension: carrier_abbr_name
